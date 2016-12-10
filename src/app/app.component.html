@@ -1,0 +1,44 @@
+<h1>HomePage</h1>
+
+<!--google map-->
+<sebm-google-map
+    [center]="center"
+    [zoom]="zoom"
+    [disableDefaultUI]="disableDefaultUI"
+    [disableDoubleClickZoom]="disableDoubleClickZoom"
+    [mapTypeId]="mapTypeId"
+    [maxZoom]="maxZoom"
+    [minZoom]="minZoom"
+    [styles]="styles"
+    (click)="mapClicked($event)">
+
+    <!--google map marker-->
+    <sebm-google-map-marker
+        [position]="position"
+        [title]="title"
+        [content]="content">
+    </sebm-google-map-marker>
+
+    <!--google map circle-->
+    <sebm-google-map-circle
+        [center]="center">
+    </sebm-google-map-circle>
+
+</sebm-google-map>
+
+<!--search-->
+<div class="form-group">
+    <label class="control-label" for="input-search">Address</label>
+    <div class="input-group">
+        <input type="text" id="input-search" class="form-control" [(ngModel)]="address" (keyup.enter)="search(address)" placeholder="Address">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-fab btn-fab-mini" title="search" (click)="search(address)">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--get current position-->
+<input class="btn btn-default btn-block" type="button" value="Get current position" (click)="getCurrentPosition()">
+
